@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        *{
+            box-sizing:border-box;
+            font-size:1.1rem;
+        }
+        body{
+            margin:0;
+            padding:0;
+            font-family:arial;
+        }
+        p{
+            text-align: center;
+        }
+        #button, #reset_button{
+            background-color:rgba(0,0,0,0);
+            font-family: sans-serif;
+            width: 130px;
+            height: 40px;
+            border:none;
+            transition:background-color 0.3s ease, color 0.3s ease, border 0.3s ease, border-radius 0.3s ease;
+        }
+        #quan_1, #quan_2, #quan_3, #quan_4, #quan_5, #quan_6, #quan_7, #quan_8, #quan_9, #quan_10, #quan_11, #quan_12, #rate_1, #rate_2, #rate_3, #rate_4, #rate_5, #rate_6, #rate_7, #rate_8, #rate_9, #rate_10, #rate_11, #rate_12{
+            width: 130px;
+            height: 40px;
+        } 
+        #button:hover{
+            background-color: black;
+            color: aliceblue;
+            border: 2px solid white;
+            border-radius:100px;
+        }
+        #reset_button:hover{
+            background-color: black;
+            color: aliceblue;
+            border: 2px solid white;
+            border-radius:100px;
+        }
+        input{
+            text-align:center;
+            margin:0;
+            padding:0;
+            border-style:none;
+            outline:none;
+        }
+        span{
+            cursor:default;
+        }
+       tr, td, th{
+            border:1px solid white;
+            background-color:#ffa31a;
+            text-align:center;
+            border-radius:10px 20px;
+        }
+        td > input{
+            background-color:rgba(0,0,0,0);
+        }
+        td, th{
+            padding:5px 0 5px 0;
+        }
+        #container{
+            width:100%;
+        }
+        table{
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+
+    <table>
+        <thead>
+            <tr>
+                <th>QUANTITY</th>
+                <th>RATE</th>
+                <th>AMOUNT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input class="field" type="number" id="quan_1"></td>
+                <td><input class="field" type="number" id="rate_1" ></td>
+                <td><span class="field" id="am_1"></span></td>
+            </tr>
+            <tr>
+                <td><input class="field" type="number" id="quan_2"></td>
+                <td><input class="field" type="number" id="rate_2" ></td>
+                <td><span class="field" id="am_2"></span></td>
+            </tr>
+            <tr>
+                <td><input class="field" type="number" id="quan_3"></td>
+                <td><input class="field" type="number" id="rate_3" ></td>
+                <td><span class="field" id="am_3"></span></td>
+            </tr>
+            <tr>
+                <td> <input class="field" type="number" id="quan_4"></td>
+                <td><input class="field" type="number" id="rate_4" ></td>
+                <td> <span class="field" id="am_4"></span></td>
+            </tr>
+            <tr>
+                <td> <input class="field" type="number" id="quan_5"></td>
+                <td><input class="field" type="number" id="rate_5" ></td>
+                <td> <span class="field" id="am_5"></span></td>
+            </tr>
+            <tr>
+                <td> <input class="field" type="number" id="quan_6"></td>
+                <td><input class="field" type="number" id="rate_6" ></td>
+                <td> <span class="field" id="am_6"></span></td>
+            </tr>
+            <tr>
+                <td> <input class="field" type="number" id="quan_7"></td>
+                <td><input class="field" type="number" id="rate_7" ></td>
+                <td> <span class="field" id="am_7"></span></td>
+            </tr>
+            <tr>
+                <td> <input class="field" type="number" id="quan_8"></td>
+                <td><input class="field" type="number" id="rate_8" ></td>
+                <td> <span class="field" id="am_8"></span></td>
+            </tr>
+            <tr>
+                <td> <input class="field" type="number" id="quan_9"></td>
+                <td><input class="field" type="number" id="rate_9" ></td>
+                <td> <span class="field" id="am_9"></span></td>
+            </tr>
+            <tr>
+                <td> <input class="field" type="number" id="quan_10"></td>
+                <td><input class="field" type="number" id="rate_10" ></td>
+                <td> <span class="field" id="am_10"></span></td>
+            </tr>
+            <tr>
+                <td><input class="field" type="number" id="quan_11"></td>
+                <td><input class="field" type="number" id="rate_11"></td>
+                <td><span class="field" id="am_11"></span></td>
+            </tr>
+            <tr>
+                <td><input class="field" type="number" id="quan_12"></td>
+                <td><input class="field" type="number" id="rate_12"></td>
+                <td><span class="field" id="am_12"></span></td>
+            </tr>
+            <tr>
+                <td><p class="field" id="quan_total">Total Quantity</p></td>
+                <td><button id="button" onclick="calculate();">Calculate</button>
+                </td>
+                <td><span class="field" id="am_total">Total</span></td>
+            </tr>
+            <tr>
+                <td><button id="reset_button" onclick="location.reload();" >Reload</button></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <style>
+        #date{
+            padding:10px;
+            width:90%;
+            text-align:center;
+            background-color:green;
+            color:white;
+            box-shadow:0 0 15px green;
+        }
+        #dateAndCopy{
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            cursor:pointer;
+        }
+        #dateAndCopy p{
+            margin:3px;
+        }
+        body{
+            background:#1b1b1b;
+        }
+    </style>
+    <div id="dateAndCopy">
+        <p id="date">Please Wait...</p>
+        <br>
+        <p style="color:white;">&copy; Ehtesham Mohi</p>
+        <br>
+    </div>
+</div>
+
+    
+    <script>
+        const input = document.querySelectorAll('input');
+        input.placeholder = '0'
+
+        function clear(){
+            // document.getElementsById('quan_1').value = '';
+            document.getElementById('quan_1').value = '' ;
+        } 
+        
+        function calculate(){
+            let quan_1 = document.getElementById('quan_1').value;
+            let quan_2 = document.getElementById('quan_2').value;
+            let quan_3 = document.getElementById('quan_3').value;
+            let quan_4 = document.getElementById('quan_4').value;
+            let quan_5 = document.getElementById('quan_5').value;
+            let quan_6 = document.getElementById('quan_6').value;
+            let quan_7 = document.getElementById('quan_7').value;
+            let quan_8 = document.getElementById('quan_8').value;
+            let quan_9 = document.getElementById('quan_9').value;
+            let quan_10 = document.getElementById('quan_10').value;
+            let quan_11 = document.getElementById('quan_11').value;
+            let quan_12 = document.getElementById('quan_12').value;
+
+            //let quan_1_int = parseInt(document.getElementsByClassName('quan_1').value);
+            //let quan_2_int = parseInt(document.getElementsByClassName('quan_2').value);
+
+            let quan_1_int = quan_1 * 1;
+            let quan_2_int = quan_2 * 1;
+            let quan_3_int = quan_3 * 1;
+            let quan_4_int = quan_4 * 1;
+            let quan_5_int = quan_5 * 1;
+            let quan_6_int = quan_6 * 1;
+            let quan_7_int = quan_7 * 1;
+            let quan_8_int = quan_8 * 1;
+            let quan_9_int = quan_9 * 1;
+            let quan_10_int = quan_10 * 1;
+            let quan_11_int = quan_11 * 1;
+            let quan_12_int = quan_12 * 1;
+
+            let quan1_int = parseInt(quan_1);
+            let quan2_int = parseInt(quan_2);
+            let quan3_int = parseInt(quan_3);
+            let quan4_int = parseInt(quan_4);
+            let quan5_int = parseInt(quan_5);
+            let quan6_int = parseInt(quan_6);
+            let quan7_int = parseInt(quan_7);
+            let quan8_int = parseInt(quan_8);
+            let quan9_int = parseInt(quan_9);
+            let quan10_int = parseInt(quan_10);
+            let quan11_int = parseInt(quan_11);
+            let quan12_int = parseInt(quan_12);
+
+            let rate_1 = document.getElementById('rate_1').value;
+            let rate_2 = document.getElementById('rate_2').value;
+            let rate_3 = document.getElementById('rate_3').value;
+            let rate_4 = document.getElementById('rate_4').value;
+            let rate_5 = document.getElementById('rate_5').value;
+            let rate_6 = document.getElementById('rate_6').value;
+            let rate_7 = document.getElementById('rate_7').value;
+            let rate_8 = document.getElementById('rate_8').value;
+            let rate_9 = document.getElementById('rate_9').value;
+            let rate_10 = document.getElementById('rate_10').value;
+            let rate_11 = document.getElementById('rate_11').value;
+            let rate_12 = document.getElementById('rate_12').value;
+
+            let rate_1_int = parseInt(rate_1);
+            let rate_2_int = parseInt(rate_2);
+            let rate_3_int = parseInt(rate_3);
+            let rate_4_int = parseInt(rate_4);
+            let rate_5_int = parseInt(rate_5);
+            let rate_6_int = parseInt(rate_6);
+            let rate_7_int = parseInt(rate_7);
+            let rate_8_int = parseInt(rate_8);
+            let rate_9_int = parseInt(rate_9);
+            let rate_10_int = parseInt(rate_10);
+            let rate_11_int = parseInt(rate_11);
+            let rate_12_int = parseInt(rate_12);
+
+            let am_1 = rate_1 * quan_1;
+            let am_2 = rate_2 * quan_2;
+            let am_3 = rate_3 * quan_3;
+            let am_4 = rate_4 * quan_4;
+            let am_5 = rate_5 * quan_5;
+            let am_6 = rate_6 * quan_6;
+            let am_7 = rate_7 * quan_7;
+            let am_8 = rate_8 * quan_8;
+            let am_9 = rate_9 * quan_9;
+            let am_10 = rate_10 * quan_10;
+            let am_11 = rate_11 * quan_11;
+            let am_12 = rate_12 * quan_12;
+
+            document.getElementById('am_1').innerHTML = am_1;
+            document.getElementById('am_2').innerHTML = am_2;
+            document.getElementById('am_3').innerHTML = am_3;
+            document.getElementById('am_4').innerHTML = am_4;
+            document.getElementById('am_5').innerHTML = am_5;
+            document.getElementById('am_6').innerHTML = am_6;
+            document.getElementById('am_7').innerHTML = am_7;
+            document.getElementById('am_8').innerHTML = am_8;
+            document.getElementById('am_9').innerHTML = am_9;
+            document.getElementById('am_10').innerHTML = am_10;
+            document.getElementById('am_11').innerHTML = am_11;
+            document.getElementById('am_12').innerHTML = am_12;
+
+            let am_1_int = parseInt(am_1);
+            let am_2_int = parseInt(am_2);
+            let am_3_int = parseInt(am_3);
+            let am_4_int = parseInt(am_4);
+            let am_5_int = parseInt(am_5);
+            let am_6_int = parseInt(am_6);
+            let am_7_int = parseInt(am_7);
+            let am_8_int = parseInt(am_8);
+            let am_9_int = parseInt(am_9);
+            let am_10_int = parseInt(am_10);
+            let am_11_int = parseInt(am_11);
+            let am_12_int = parseInt(am_12);
+
+            let am_total  = am_1_int + am_2_int + am_3_int + am_4_int + am_5_int + am_6_int + am_7_int + am_8_int + am_9_int + am_10_int + am_11_int + am_12_int;
+            document.getElementById('am_total').innerHTML = am_total;
+
+            // let quan_total = quan1_int + quan2_int + quan3_int + quan4_int + quan5_int + quan6_int + quan7_int + quan8_int + quan9_int + quan10_int + quan11_int + quan12_int;
+            // let quan_total = quan_1 + quan_2 + quan_3 + quan_4 + quan_5 + quan_6 + quan_7 + quan_8 + quan_9 + quan_10 + quan_11 + quan_12;
+            //let quan_total = (quan_1) + (quan_2);
+            let quan_total = quan_1_int + quan_2_int + quan_3_int + quan_4_int + quan_5_int + quan_6_int + quan_7_int + quan_8_int + quan_9_int + quan_10_int + quan_11_int + quan_12_int;
+            document.getElementById('quan_total').innerHTML = quan_total;
+        }    
+        // document.getElementById('date').innerHTML = Date();
+            function date(){
+                let current_date = new Date();
+                document.getElementById('date').innerHTML = current_date.getDate() + '/' + (current_date.getMonth()+1) + '/' + current_date.getFullYear();
+            }
+            setTimeout(date, 1000);
+    </script>
+</body>
+</html>
